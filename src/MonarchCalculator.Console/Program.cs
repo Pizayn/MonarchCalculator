@@ -309,9 +309,9 @@ namespace MonarchCalculator
         public int GetTotalMonarchCount(List<Monarch> monarchs)
         {
             if (monarchs.Count > AppSettings.ParallelThreshold)
-                return monarchs.Where(x => x.House != "Commonwealth").AsParallel().Count();
+                return monarchs.AsParallel().Count();
             else
-                return monarchs.Where(x=>x.House != "Commonwealth").Count();
+                return monarchs.Count();
         }
 
         public (string MonarchName, int Duration) GetLongestRulingMonarch(List<Monarch> monarchs)
