@@ -102,7 +102,7 @@ Example console output might look like this:
 ```plaintext
 [INFO] Application is starting...
 [INFO] Fetching data from remote...
-[INFO] 1) Total monarch count   : 57
+[INFO] 1) Total monarch count   : 54
 [INFO] 2) Longest ruling monarch: Elizabeth II (73 years)
 [INFO] 3) Longest ruling house  : House of Windsor (187 years)
 [INFO] 4) Most common first name: Edward
