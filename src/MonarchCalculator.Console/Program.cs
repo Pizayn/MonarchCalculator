@@ -297,6 +297,7 @@ namespace MonarchCalculator
 
             // 2) If not in cache, fetch from repository
             var repoResponse = await _repo.FetchMonarchsAsync(url);
+            repoResponse.Data = repoResponse.Data.Where(x => x.House != "Commonwealth").ToList();
             if (repoResponse.Status && repoResponse.Data != null)
             {
                 _cacheService.StoreCache(repoResponse.Data);
@@ -308,9 +309,9 @@ namespace MonarchCalculator
         public int GetTotalMonarchCount(List<Monarch> monarchs)
         {
             if (monarchs.Count > AppSettings.ParallelThreshold)
-                return monarchs.AsParallel().Count();
+                return monarchs.Where(x => x.House != "Commonwealth").AsParallel().Count();
             else
-                return monarchs.Count();
+                return monarchs.Where(x=>x.House != "Commonwealth").Count();
         }
 
         public (string MonarchName, int Duration) GetLongestRulingMonarch(List<Monarch> monarchs)
